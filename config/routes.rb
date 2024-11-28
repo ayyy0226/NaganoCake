@@ -7,4 +7,21 @@ Rails.application.routes.draw do
   devise_for :admins, skip: [:registrations, :passwords], controllers: {
     sessions: 'admin/sessions'
   }
+
+  scope module: :public do
+    get 'customers/my_page', to: 'customers#show'
+    resources :customers, only: [:update, :edit, :desteoy]
+    resources :items, only: [:index, :update, :create, :destroy, :destroy_all]
+    resources :cart_items, only: [:index, :update, :create, :destroy, :destroy_all]
+    resources :addresses, only: [:index, :create, :update, :show, :edit]
+    resources :orders, only: [:new, :index, :show, :create]
+      get 'orders/confirm', to: 'orders#confirm'
+      get 'orders/thanks', to: 'orders#thanks'
+  end
+
+
+  root to: 'homes#top'
+
+  get 'homes/about', as: 'about'
+
 end

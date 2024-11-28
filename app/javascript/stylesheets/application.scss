@@ -1,0 +1,30 @@
+@use '~boostrap/scss/boostrap';
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.container{
+  margin: 0 auto;
+}
+
+header{
+  width: 100%;
+  line-height: 40px;
+  text-aline: center;
+  font-size: 20px;
+}
+
+.nav-item{
+  display: flex;
+  justify-content: flex-end;
+  color: #ff6c94;
+}
+
+footer{
+  background-color: #432c02;
+  line-height: 60px;
+  text-aline: center;
+}

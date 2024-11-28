@@ -1,0 +1,26 @@
+<div class="container" style="background-color: #f6f0cc;">
+  <div class="row">
+    <h2 class="text-center pt-4 pb-4" style="background-color: #ff6c94;">マイページ</h2>
+      <%= image_tag @customer.get_profile_image(100,100) %>
+       <table class="container card mt-3 mb-3">
+         <tbody>
+           <tr>
+             <th>姓</th>
+             <td><%= @customer.first_name %></td>
+             <th>セイ</th>
+             <td><%= @customer.first_name_kana %></td>
+             <th>名</th>
+             <td><%= @customer.last_name %></td>
+             <th>メイ</th>
+             <td><%= @customer.last_name_kana %></td>
+            </tr>
+            <tr>
+             <th>メールアドレス</th>
+             <td><%= @customer.email %></td>
+           </tr>
+         </tbody>
+       </table>
+  </div>
+  
+  　
+</div>
