@@ -9,8 +9,7 @@ Rails.application.routes.draw do
   }
 
   scope module: :public do
-    get 'customers/my_page', to: 'customers#show'
-    resources :customers, only: [:update, :edit, :desteoy]
+    resources :customers, only: [:update, :edit, :desteoy, :show]
     resources :items, only: [:index, :update, :create, :destroy, :destroy_all]
     resources :cart_items, only: [:index, :update, :create, :destroy, :destroy_all]
     resources :addresses, only: [:index, :create, :update, :show, :edit]
