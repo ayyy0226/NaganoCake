@@ -9,7 +9,12 @@ Rails.application.routes.draw do
   }
 
   scope module: :public do
-    resources :customers, only: [:update, :edit, :desteoy, :show]
+    resources :customers, only: [:update, :edit, :desteoy, :show] do
+      member do
+        get 'unsubscribe'
+        patch 'withdraw'
+      end
+    end
     resources :items, only: [:index, :update, :create, :destroy, :destroy_all]
     resources :cart_items, only: [:index, :update, :create, :destroy, :destroy_all]
     resources :addresses, only: [:index, :create, :update, :show, :edit]
