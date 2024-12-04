@@ -7,8 +7,9 @@ Rails.application.routes.draw do
   devise_for :admins, skip: [:registrations, :passwords], controllers: {
     sessions: 'admin/sessions'
   }
-  
+
   namespace :admin do
+    get 'homes/top'
     resources :items
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders, only: [:update, :show]
