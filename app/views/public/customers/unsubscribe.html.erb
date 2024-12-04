@@ -7,7 +7,7 @@
          退会する場合は、「退会する」を押してください。
       </p>
       <div class="withdraw mt-4">
-        <%= link_to "退会する", withdraw_customer_path, method: :patch, class: 'btn btn-danger' %>
+        <%= link_to "退会する", withdraw_customers_path, method: :patch, class: 'btn btn-danger' %>
       </div>
       <div class="my_page">
         <%= link_to "退会しない", customer_path(current_customer.id), class: 'btn btn-primary' %>

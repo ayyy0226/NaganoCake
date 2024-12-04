@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row" style="background-color: #f6f0cc;">
+    <div class="col-md-4">
+      <h3 class="items" style="background-color: #ff6c94;">商品新規登録</h3>
+    </div>
+    <%= form_with model: @item do |f| %>
+    
+      <p class="item-image m-4">商品画像：</p>
+      <%= f.file_field :image, accept: "image/*" %>
+      <p class="item-name">商品名：</p>
+      <%= f.text_field :name %>
+      <p class="item-caption">商品説明：</p>
+      <%= f.text_field :introduction %>
+      <p class="item-price">税抜価格：</p>
+      <%= f.text_field :price %>
+      
+      <%= f.submit '新規登録' %>
+    <% end %>
+  </div>
+</div>

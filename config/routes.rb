@@ -7,18 +7,22 @@ Rails.application.routes.draw do
   devise_for :admins, skip: [:registrations, :passwords], controllers: {
     sessions: 'admin/sessions'
   }
+  
+  namespace :admin do
+    resources :items
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :orders, only: [:update, :show]
+  end
 
   scope module: :public do
-    resources :customers, only: [:update, :edit, :desteoy, :show] do
-      member do
-        get 'unsubscribe'
-        patch 'withdraw'
-      end
-    end
     resources :items, only: [:index, :update, :create, :destroy, :destroy_all]
     resources :cart_items, only: [:index, :update, :create, :destroy, :destroy_all]
     resources :addresses, only: [:index, :create, :update, :show, :edit]
     resources :orders, only: [:new, :index, :show, :create]
+    resources :customers, only: [:update, :edit, :desteoy, :show] do
+      get 'unsubscribe', on: :member
+      patch 'withdraw', on: :collection
+    end
       get 'orders/confirm', to: 'orders#confirm'
       get 'orders/thanks', to: 'orders#thanks'
   end

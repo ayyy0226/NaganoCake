@@ -8,14 +8,6 @@ class Public::SessionsController < Devise::SessionsController
     super
   end
 
-  def create
-    super
-  end
-
-  def destroy
-    super
-  end
-
   def after_sign_in_path_for(resource)
     flash[:notice] = "新規登録に成功しました"
     customer_path(current_customer.id)
@@ -37,7 +29,7 @@ class Public::SessionsController < Devise::SessionsController
   def customer_state
     customer = Customer.find_by(email: params[:customer][:email])
     return if customer.nil?
-    return if user.valid_password?(params[:customer][:password]) && customer.active_for_authentication?
+    return if customer.valid_password?(params[:customer][:password]) && customer.active_for_authentication?
     flash[:alert] = "退会済みです。再度ご登録をしてご利用ください。"
     redirect_to new_customer_registration_path
   end
